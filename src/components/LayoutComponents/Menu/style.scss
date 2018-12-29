@@ -1,6 +1,6 @@
-@import '../../../resources/mixins';
+@import "../../../resources/mixins";
 
-.menu {
+.publicUI .menu {
   &__collapseLabel {
     position: absolute;
     top: 11px;
@@ -22,7 +22,7 @@
 .drawer-content {
   overflow: visible;
   background: $menuBg;
-  transition: background .3s;
+  transition: background 0.3s;
 }
 
 .drawer-button {
@@ -36,7 +36,8 @@
 
 .drawer-button-icon {
   background: $white !important;
-  &:after, &:before {
+  &:after,
+  &:before {
     background: $white !important;
   }
 }

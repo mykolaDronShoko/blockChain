@@ -1,7 +1,7 @@
-@import '../../../../resources/mixins';
+@import "../../../../resources/mixins";
 
-div.bitcoinPrice {
-  @media(max-width: 1300px) {
+.publicUI div.bitcoinPrice {
+  @media (max-width: 1300px) {
     display: none !important;
   }
 }

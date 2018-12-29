@@ -1,11 +1,10 @@
 @import "../../../resources/mixins";
 
-.breadcrumbBar {
-  padding: rem(2) rem(20);
+.publicUI .breadcrumbBar {
+  padding: rem(10) rem(20);
   margin: rem(-30);
   margin-bottom: rem(30);
-  background-color: #7e7e7e;
-  color: #ffffff !important;
+  background-color: $white;
   border-bottom: 1px solid $gray-border;
 
   @media (max-width: $sm-min-width) {
@@ -15,7 +14,7 @@
 
   &__path {
     font-size: rem(18);
-    color: #ffffff;
+    color: $black;
   }
 
   &__arrow {

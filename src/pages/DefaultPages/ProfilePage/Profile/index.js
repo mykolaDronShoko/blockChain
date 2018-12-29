@@ -91,7 +91,7 @@ class ProfileApp extends React.Component {
       posts
     } = this.state;
     return (
-      <div className="profile">
+      <div className="profile m-4">
         <div className="row">
           <div className="col-xl-4">
             <div
@@ -175,6 +175,17 @@ class ProfileApp extends React.Component {
             </div> */}
             <div className="card">
               <div className="card-body">
+                <h2>
+                  <span className="text-black mr-2">
+                    <strong>{name}</strong>
+                  </span>
+                  <small className="text-muted">{nickname}</small>
+                </h2>
+                <p className="mb-1">01.01.2018/England</p>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card-body">
                 <h5 className="mb-3 text-black">
                   <strong>Calendar</strong>
                 </h5>
@@ -183,27 +194,6 @@ class ProfileApp extends React.Component {
             </div>
           </div>
           <div className="col-xl-8">
-            <div className="card profile__social-info">
-              <div className="profile__social-name">
-                <h2>
-                  <span className="text-black mr-2">
-                    <strong>{name}</strong>
-                  </span>
-                  <small className="text-muted">{nickname}</small>
-                </h2>
-                {/* <p className="mb-1">{post}</p> */}
-              </div>
-              {/* <div className="profile__social-counts">
-                <div className="text-center mr-3">
-                  <h2>{followersCount}</h2>
-                  <p className="mb-0">Followers</p>
-                </div>
-                <div className="text-center">
-                  <h2>{postsCount}</h2>
-                  <p className="mb-0">Posts</p>
-                </div>
-              </div> */}
-            </div>
             <div className="card">
               <div className="card-body">
                 <Tabs defaultActiveKey="1">
@@ -220,7 +210,7 @@ class ProfileApp extends React.Component {
                   <TabPane
                     tab={
                       <span>
-                        <i className="icmn-bubbles" /> Change Password
+                        <i className="icmn-key2" /> Change Password
                       </span>
                     }
                     key="2"
@@ -240,7 +230,7 @@ class ProfileApp extends React.Component {
                   <TabPane
                     tab={
                       <span>
-                        <i className="icmn-cog" /> Privacy
+                        <i className="icmn-eye-blocked" /> Privacy
                       </span>
                     }
                     key="4"

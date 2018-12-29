@@ -1,118 +1,87 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Spinner } from 'react-redux-spinner'
-import { BackTop, Layout as AntLayout } from 'antd'
-import Routes from 'routes'
-import TopBar from 'components/LayoutComponents/TopBar'
-import Footer from 'components/LayoutComponents/Footer'
-import Menu from 'components/LayoutComponents/Menu'
-import Content from 'components/LayoutComponents/Content'
-import Loader from 'components/LayoutComponents/Loader'
-import LayoutState from 'components/LayoutComponents/LayoutState'
-import SettingsSider from 'components/LayoutComponents/SettingsSider'
-import { enquireScreen, unenquireScreen } from 'enquire-js'
-import { ContainerQuery } from 'react-container-query'
-import classNames from 'classnames'
-
-const AntContent = AntLayout.Content
-const AntHeader = AntLayout.Header
-const AntFooter = AntLayout.Footer
+import React from "react";
+import PropTypes from "prop-types";
+import Routes from "routes";
+import { enquireScreen, unenquireScreen } from "enquire-js";
+import { ContainerQuery } from "react-container-query";
+import classNames from "classnames";
 
 const query = {
-  'screen-xs': {
-    maxWidth: 575,
+  "screen-xs": {
+    maxWidth: 575
   },
-  'screen-sm': {
+  "screen-sm": {
     minWidth: 576,
-    maxWidth: 767,
+    maxWidth: 767
   },
-  'screen-md': {
+  "screen-md": {
     minWidth: 768,
-    maxWidth: 991,
+    maxWidth: 991
   },
-  'screen-lg': {
+  "screen-lg": {
     minWidth: 992,
-    maxWidth: 1199,
+    maxWidth: 1199
   },
-  'screen-xl': {
+  "screen-xl": {
     minWidth: 1200,
-    maxWidth: 1599,
+    maxWidth: 1599
   },
-  'screen-xxl': {
-    minWidth: 1600,
-  },
-}
+  "screen-xxl": {
+    minWidth: 1600
+  }
+};
 
-let isMobile
+let isMobile;
 enquireScreen(b => {
-  isMobile = b
-})
+  isMobile = b;
+});
 
 let contentBuffer = {
   pathName: null,
-  content: null,
-}
+  content: null
+};
 
 class Layout extends React.Component {
   static childContextTypes = {
     getContentBuffer: PropTypes.func,
-    setContentBuffer: PropTypes.func,
-  }
+    setContentBuffer: PropTypes.func
+  };
 
   state = {
-    isMobile,
-  }
+    isMobile
+  };
 
   getChildContext() {
     return {
       getContentBuffer: () => contentBuffer,
-      setContentBuffer: ({ pathName, content }) => (contentBuffer = { pathName, content }),
-    }
+      setContentBuffer: ({ pathName, content }) =>
+        (contentBuffer = { pathName, content })
+    };
   }
 
   componentDidMount() {
     this.enquireHandler = enquireScreen(mobile => {
       this.setState({
-        isMobile: mobile,
-      })
-    })
+        isMobile: mobile
+      });
+    });
   }
 
   componentWillUnmount() {
-    unenquireScreen(this.enquireHandler)
+    unenquireScreen(this.enquireHandler);
   }
 
   render() {
-    const isMobile = !!this.state.isMobile
+    const isMobile = !!this.state.isMobile;
     return (
       <ContainerQuery query={query}>
         {params => (
           <div className={classNames(params)}>
-           
-              <LayoutState />
-              <Loader />
-              <Spinner />
-              <BackTop />
-              <Routes />
-            {/* <Menu isMobile={isMobile} />
-              <SettingsSider /> 
-              <AntLayout>
-                 <AntHeader>
-                  <TopBar />
-                </AntHeader>
-                <AntContent style={{ height: '100%' }}>
-                  <Content />
-                </AntContent>
-                <AntFooter>
-                  <Footer />
-                </AntFooter>
-              </AntLayout> */}
-        
+            <Routes />
           </div>
         )}
       </ContainerQuery>
-    )
+    );
   }
 }
 
-export default Layout
+export default Layout;

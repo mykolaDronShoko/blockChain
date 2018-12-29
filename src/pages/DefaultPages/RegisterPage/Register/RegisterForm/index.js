@@ -2,10 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { REDUCER, submit } from "ducks/login";
-import { Form, Input, Button, Icon, Checkbox } from "antd";
+import { Form, Input, Button, Icon, Select, DatePicker } from "antd";
+import * as countries from "../../../ProfilePage/Profile/SettingsForm/countries.json";
+import moment from "moment";
 
 const FormItem = Form.Item;
-
+const Option = Select.Option;
 const mapStateToProps = (state, props) => ({
   isSubmitForm: state.app.submitForms[REDUCER]
 });
@@ -99,6 +101,30 @@ class RegisterForm extends React.Component {
             )}
           </FormItem>
           <FormItem>
+            {getFieldDecorator("Country", {
+              initialValue: "United Kingdom",
+              rules: [
+                { required: true, message: "Please select your Country!" }
+              ]
+            })(
+              <Select placeholder="Country" style={{ width: "100%" }}>
+                {countries.map(c => (
+                  <Option key={c.name} value={c.name}>
+                    {c.name}({c.code})
+                  </Option>
+                ))}
+              </Select>
+            )}
+          </FormItem>
+          <FormItem>
+            {getFieldDecorator("DateBirth", {
+              initialValue: moment("2018-01-01"),
+              rules: [
+                { required: true, message: "Please input your Date of Birth!" }
+              ]
+            })(<DatePicker style={{ width: "100%" }} />)}
+          </FormItem>
+          <FormItem>
             <Button
               type="primary"
               htmlType="submit"
@@ -106,8 +132,7 @@ class RegisterForm extends React.Component {
             >
               Create Account
             </Button>
-            Already have an account?{" "}
-            <Link to="/home/login">Sign in here >></Link>
+            Already have an account? <Link to="/home/login">Sign in here</Link>
           </FormItem>
         </Form>
       </div>

@@ -1,48 +1,48 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { setUpdatingContent } from 'ducks/app'
-import { isEmpty } from 'lodash'
-import Breadcrumb from 'components/LayoutComponents/Breadcrumb'
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { setUpdatingContent } from "ducks/app";
+import { isEmpty } from "lodash";
+import Breadcrumb from "components/LayoutComponents/Breadcrumb";
 
 const mapStateToProps = (state, props) => ({
-  isUpdatingContent: state.app.isUpdatingContent,
-})
+  isUpdatingContent: state.app.isUpdatingContent
+});
 
 @connect(mapStateToProps)
 class AppContent extends React.Component {
   static contextTypes = {
-    getContentBuffer: PropTypes.func,
-  }
+    getContentBuffer: PropTypes.func
+  };
 
-  node: HTMLElement
+  node;
 
-  shouldComponentUpdate(nextProps: { isUpdatingContent: boolean }) {
+  shouldComponentUpdate(nextProps) {
     if (this.props.isUpdatingContent && !nextProps.isUpdatingContent) {
-      return false
+      return false;
     }
-    return true
+    return true;
   }
 
   componentDidUpdate() {
-    const { isUpdatingContent, dispatch } = this.props
+    const { isUpdatingContent, dispatch } = this.props;
     if (isUpdatingContent) {
-      dispatch(setUpdatingContent(false))
+      dispatch(setUpdatingContent(false));
     }
   }
 
   render() {
-    const { getContentBuffer } = this.context
-    const { pathName, content } = getContentBuffer()
+    const { getContentBuffer } = this.context;
+    const { pathName, content } = getContentBuffer();
     return isEmpty(content) ? (
       <div className="utils__loadingPage" />
     ) : (
       <div className="utils__content">
-        <Breadcrumb name={pathName} />
+        {/* <Breadcrumb name={pathName} /> */}
         {content}
       </div>
-    )
+    );
   }
 }
 
-export default AppContent
+export default AppContent;

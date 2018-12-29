@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
             prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
           />
           <InputAdapter
-            placeholder="Username"
+            placeholder="Password"
             name="password"
             form={this.props.form}
             value=""
@@ -62,9 +62,9 @@ class LoginForm extends React.Component {
               valuePropName: "checked",
               initialValue: true
             })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
+            <Link className="login-form-forgot" to="/home/forgot-password">
               Forgot password
-            </a>
+            </Link>
             <Button
               type="primary"
               htmlType="submit"
@@ -72,7 +72,7 @@ class LoginForm extends React.Component {
             >
               Log in
             </Button>
-            Or <Link to="/home/signup">Register now >></Link>
+            Or <Link to="/home/signup">Register now</Link>
           </FormItem>
         </Form>
       </div>

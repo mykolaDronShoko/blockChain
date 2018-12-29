@@ -1,25 +1,25 @@
-import React from 'react'
-import { Table, Icon, Input, Button, Spin, Divider } from 'antd'
+import React from "react";
+import { Table, Icon, Input, Button, Spin, Divider } from "antd";
 /* import * as ax from '../../../../services/axios-services'
 import * as services from '../../../../services/notifi-service'
 import { MAGIC } from '../../../../globalURL' */
 class TermsConditions extends React.Component {
   state = {
     magic: {
-      Description: '',
-      SeoTitle: '',
-      Title: '',
-      Content: '',
-      SeoDescription: '',
-    },
-  }
-  _isMounted = false
+      Description: "Terms and Conditions",
+      SeoTitle: "",
+      Title: "Terms and Conditions",
+      Content: "Terms and Conditions Content",
+      SeoDescription: ""
+    }
+  };
+  _isMounted = false;
   componentDidMount() {
     /* this._isMounted = true
     this.getMagic(10) */
   }
   componentWillUnmount() {
-    this._isMounted = false
+    this._isMounted = false;
   }
   /* getMagic(type) {
     ax.getMethod(MAGIC + '/' + type)
@@ -34,36 +34,40 @@ class TermsConditions extends React.Component {
       })
   } */
   render() {
-    const { Title, Content, Description } = this.state.magic
-    const antIcon = <Icon type="loading" style={{ fontSize: 32 }} spin />
+    const { Title, Content, Description } = this.state.magic;
+    const antIcon = <Icon type="loading" style={{ fontSize: 32 }} spin />;
     return (
-      <div className="container mt-5 " style={{ minHeight: '40rem' }}>
-        {this.state.magic.Title !== '' ? (
-          <div className="row pb-5">
+      <React.Fragment>
+        <div className="container">
+          <div className="row">
             <div className="col-12">
-              <div className="">
-                <h1 className="pl-3">{Title}</h1>
-                <p className="pl-3">
-                  <small>{Description}</small>
-                </p>
-                <Divider />
-              </div>
-            </div>
+              <div className="card mt-4">
+                <div className="card-body">
+                  <div className="mt-1 pb-1">
+                    {this.state.magic.Title !== "" ? (
+                      <span>
+                        <h1 className="pl-3">{Title}</h1>
+                        <p className="pl-3">
+                          <small>{Description}</small>
+                        </p>
+                      </span>
+                    ) : (
+                      <span style={{ marginLeft: "50%" }}>
+                        <Spin indicator={antIcon} />
+                      </span>
+                    )}
 
-            <div className="row">
-              <div className="col-12" style={{ padding: ' 0 4rem' }}>
-                {Content}
+                    <Divider />
+                  </div>
+                  {Content}
+                </div>
               </div>
             </div>
           </div>
-        ) : (
-          <span>
-            <Spin indicator={antIcon} style={{ marginLeft: '50%' }} />
-          </span>
-        )}
-      </div>
-    )
+        </div>
+      </React.Fragment>
+    );
   }
 }
 
-export default TermsConditions
+export default TermsConditions;

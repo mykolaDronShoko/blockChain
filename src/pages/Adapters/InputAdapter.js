@@ -5,6 +5,16 @@ const FormItem = Form.Item;
 class InputAdapter extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 4 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 20 },
+        sm: { span: 16 }
+      }
+    };
     return (
       <FormItem>
         <label className="form-label mb-0">{this.props.lable}</label>

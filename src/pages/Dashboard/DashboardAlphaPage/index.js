@@ -1,23 +1,22 @@
-import React from 'react'
-import Page from 'components/LayoutComponents/Page'
-import Helmet from 'react-helmet'
-import DashboardAlpha from './DashboardAlpha'
+import React from "react";
+import Page from "components/LayoutComponents/Page";
+import Helmet from "react-helmet";
+import DashboardAlpha from "./DashboardAlpha";
 
 class DashboardAlphaPage extends React.Component {
   static defaultProps = {
-    pathName: 'Dashboard Alpha',
-    roles: ['agent', 'administrator'],
-  }
+    pathName: "Dashboard Alpha"
+  };
 
   render() {
-    const props = this.props
+    const props = this.props;
     return (
       <Page {...props}>
         <Helmet title="Dashboard Alpha" />
         <DashboardAlpha />
       </Page>
-    )
+    );
   }
 }
 
-export default DashboardAlphaPage
+export default DashboardAlphaPage;

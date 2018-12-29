@@ -41,7 +41,7 @@ class ProfileMenu extends React.Component {
         </Menu.Item>
         <Menu.Divider />
         <Menu.Item>
-          <Link to="/home/viewProfile">View Profile</Link>
+          <Link to="/home/viewprofile">View Profile</Link>
         </Menu.Item>
         <Menu.Item>
           <Link to="/home/profile">Edit Profile</Link>

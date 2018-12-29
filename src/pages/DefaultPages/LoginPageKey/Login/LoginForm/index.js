@@ -29,9 +29,9 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="cat__pages__login__block__form">
-        <h4 className="text-uppercase">
+        <h5 className="text-black mt-4">
           <strong>Credentials on Blockchain</strong>
-        </h4>
+        </h5>
         <br />
         {/* <div className="mb-2">
           Email: <code>admin@mediatec.org</code> or <code>agent@mediatec.org</code>
@@ -39,7 +39,11 @@ class LoginForm extends React.Component {
         <div className="mb-4">
           Password: <code>123123</code>
         </div> */}
-        <Form onSubmit={this.onSubmitForm} className="login-form">
+        <Form
+          layout="horizontal"
+          onSubmit={this.onSubmitForm}
+          className="login-form"
+        >
           <InputAdapter
             placeholder="Access Key"
             name="key"
@@ -57,7 +61,10 @@ class LoginForm extends React.Component {
             >
               Log in
             </Button>
-            Or <Link to="/home/signup">Register now >></Link>
+            Or{" "}
+            <Link to="/login">
+              Sign in to the account you would like to merge.
+            </Link>
           </FormItem>
         </Form>
       </div>
