@@ -17,9 +17,9 @@ class TopBar extends React.Component {
           <div className="topbar">
             <div className="topbar__left">
               <BitcoinPrice />
-              <LiveSearch />
             </div>
             <div className="topbar__right">
+              <LiveSearch />
               <IssuesHistory />
               <ProfileMenu />
             </div>

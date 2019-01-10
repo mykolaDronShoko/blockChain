@@ -10,18 +10,17 @@ class BitcoinPrice extends React.Component {
   render() {
     const { chartsData } = this.state;
     return (
-      <div
-        className="d-inline-block mr-4"
-        style={{ fontSize: "24px", textShadow: "1px 1px #ffffff" }}
-      >
-        <span className="text-success">
-          <strong>Block</strong>
+      <div className="d-inline-block mr-4" style={{ fontSize: "35px" }}>
+        <img
+          src="resources/images/logo-2925.png"
+          alt="logo"
+          style={{ height: "64px" }}
+        />
+        <span className="text-white">
+          <strong>Credential</strong>
         </span>
-        <span className="text-info">
-          <strong>Certs</strong>
-        </span>
-        <span className="text-danger">
-          <strong>POC</strong>
+        <span className="text-muted">
+          <strong>Check</strong>
         </span>
       </div>
     );

@@ -22,5 +22,17 @@ export default [
     key: "Institutions",
     url: "/controlpanel/Institutions",
     icon: "icmn icmn-stack"
+  },
+  {
+    title: "Users",
+    key: "Users",
+    url: "/controlpanel/users",
+    icon: "icmn icmn-stack"
+  },
+  {
+    title: "Credential Recording",
+    key: "credential",
+    url: "/controlpanel/credential-recording",
+    icon: "icmn icmn-stack"
   }
 ];

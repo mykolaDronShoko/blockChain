@@ -202,21 +202,34 @@ class MenuLeft extends React.Component {
     return (
       <Sider {...params} className="menuLeft">
         <div className="menuLeft__logo">
-          <div
-            className="d-inline-block mr-4"
-            style={{ fontSize: "34px", textShadow: "1px 1px #ffffff" }}
-          >
-            <span className="text-success">
-              <strong>Block</strong>
-            </span>
-            <span className="text-info">
-              <strong>Certs</strong>
-            </span>
-            <span className="text-danger">
-              <strong>POC</strong>
-            </span>
-          </div>
+          {params.collapsed ? (
+            <div className="menuLeft__logoContainer menuLeft__logoContainer--collapsed">
+              <img
+                src="resources/images/logo-2925.png"
+                alt="logo"
+                style={{ height: "100%" }}
+              />
+            </div>
+          ) : (
+            <div
+              className="menuLeft__logoContainer"
+              style={{ fontSize: "22px" }}
+            >
+              <img
+                src="resources/images/logo-2925.png"
+                alt="logo"
+                style={{ height: "100%" }}
+              />
+              <span className="text-white">
+                <strong>Credential</strong>
+              </span>
+              <span className="text-muted">
+                <strong>Check</strong>
+              </span>
+            </div>
+          )}
         </div>
+
         <Scrollbars
           autoHide
           style={{

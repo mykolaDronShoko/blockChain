@@ -74,6 +74,21 @@ h6 {
   line-height: 46px;
   white-space: nowrap;
 }
+.publicUI .footerUI .ant-menu-horizontal {
+  border: 0;
+  background: #4e4e4e;
+  /* color: #ffffff; */
+  float: right;
+  border-bottom: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  line-height: 46px;
+  white-space: nowrap;
+}
+.publicUI .footerUI .ant-menu-item a {
+  cursor: pointer !important;
+  color: #ffffff;
+}
 .publicUI .ant-layout-header {
   background: #001529;
   padding: 0 0px;

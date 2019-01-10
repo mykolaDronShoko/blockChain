@@ -81,7 +81,7 @@ class DynamicInputAdapter extends React.Component {
     return (
       <dvi>
         {formItems}
-        <Form.Item {...formItemLayout} label="Add Course Resul">
+        <Form.Item {...formItemLayout} label="Add Course Result">
           <Button type="dashed" onClick={this.add} style={{ width: "100%" }}>
             <Icon type="plus" /> Add field
           </Button>

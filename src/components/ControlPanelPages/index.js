@@ -22,6 +22,9 @@ import InstitutionsPage from "./Institutions/InstitutionsPage/index";
 import InstitutionEditPage from "./Institutions/InstitutionEditPage/index";
 import ViewProfilePage from "../../pages/DefaultPages/ViewProfilePage/index";
 import ProfileAppPage from "../../pages/DefaultPages/ProfilePage/index";
+import CredentialRecordingFlow from "./CredentialRecording/CredentialRecordingFlow/index";
+import UsersPage from "./Users/UsersPage/index";
+import UsersEditPage from "./Users/UsersEditPage/index";
 
 const AntContent = AntLayout.Content;
 const AntHeader = AntLayout.Header;
@@ -132,12 +135,12 @@ class ControlPanel extends React.Component {
                 />
                 <Route
                   exact
-                  path="/controlpanel/edit-course"
+                  path="/controlpanel/courses/edit-course/:id"
                   component={CourseEditPage}
                 />
                 <Route
                   exact
-                  path="/controlpanel/add-course"
+                  path="/controlpanel/courses/add-course"
                   component={CourseEditPage}
                 />
                 <Route
@@ -179,6 +182,22 @@ class ControlPanel extends React.Component {
                   exact
                   path="/controlpanel/institutions/add-institution"
                   component={InstitutionEditPage}
+                />
+                <Route
+                  exact
+                  path="/controlpanel/credential-recording"
+                  component={CredentialRecordingFlow}
+                />
+                <Route exact path="/controlpanel/users" component={UsersPage} />
+                <Route
+                  exact
+                  path="/controlpanel/users/add-user"
+                  component={UsersEditPage}
+                />
+                <Route
+                  exact
+                  path="/controlpanel/users/edit-user/:id"
+                  component={UsersEditPage}
                 />
               </Switch>
             </AntContent>

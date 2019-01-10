@@ -62,20 +62,22 @@ class LiveSearch extends React.Component {
           }
           id="livesearch"
         >
-          <div className="livesearch__close" onClick={this.hideLiveSearch}>
+          <div className="livesearch__close " onClick={this.hideLiveSearch}>
             <i className="icmn-cross" />
           </div>
-          <div className="container-fluid">
-            <div className="livesearch__wrapper" style={{ fontSize: "24px" }}>
+          <div className="container-fluid bg-secondary">
+            <div className="livesearch__wrapper" style={{ fontSize: "35px" }}>
               <div className="livesearch__logo">
-                <span className="text-success">
-                  <strong>Block</strong>
+                <img
+                  src="resources/images/logo-2925.png"
+                  alt="logo"
+                  style={{ width: "14%" }}
+                />
+                <span className="text-white">
+                  <strong>Credential</strong>
                 </span>
-                <span className="text-info">
-                  <strong>Certs</strong>
-                </span>
-                <span className="text-danger">
-                  <strong>POC</strong>
+                <span className="text-muted">
+                  <strong>Check</strong>
                 </span>
               </div>
               <div className="livesearch__search">

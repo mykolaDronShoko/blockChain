@@ -1,23 +1,38 @@
 import React from "react";
-import {
-  Input,
-  Button,
-  Form,
-  Divider
-} from "antd"; /* 
+import { Button, Form, Divider } from "antd";
+
+/* 
 import { CURRENCIES, CURRENCIES_GET } from "../../../../../globalURL";
 import { connect } from "react-redux";
 import * as ax from "../../../../../services/axios-services";
 import * as services from "../../../../../services/notifi-service"; */
-import SubmitButton from "../../../../../pages/Adapters/SubmitButton";
-import CancelButton from "../../../../../pages/Adapters/CancelButton";
+// Require Editor JS files.
+import moment from "moment"; /* 
+import FroalaEditor from "react-froala-wysiwyg";
+import "froala-editor/js/froala_editor.pkgd.min.js";
+
+// Require Editor CSS files.
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+
+// Require Font Awesome.
+import "font-awesome/css/font-awesome.css"; */
+
+// Import React FilePond
+import { FilePond, File, registerPlugin } from "react-filepond";
+
+// Import FilePond styles
+import "filepond/dist/filepond.min.css";
+import SelectAdapter2 from "../../../../../pages/Adapters/SelectAdapter2";
 import BaseContainer from "../../../../../pages/Adapters/BaseContainer";
 import InputAdapter2 from "../../../../../pages/Adapters/InputAdapter2";
-import SelectAdapter2 from "../../../../../pages/Adapters/SelectAdapter2";
-import RangePickerAdapter2 from "../../../../../pages/Adapters/RangePickerAdapter2";
 import TextAreaAdapter2 from "../../../../../pages/Adapters/TextAreaAdapter2";
-import moment from "moment";
-import DynamicInputAdapter from "../../../../../pages/Adapters/DynamicInputAdapter";
+import SubmitButton from "../../../../../pages/Adapters/SubmitButton";
+import CancelButton from "../../../../../pages/Adapters/CancelButton";
+import DatePickerAdapter2 from "../../../../../pages/Adapters/DatePickerAdapter2";
+import AddButton from "../../../../../pages/Adapters/AddButton";
+import CheckboxAdapter from "../../../../../pages/Adapters/CheckboxAdapter";
+import CheckboxAdapter2 from "../../../../../pages/Adapters/CheckboxAdapter2";
 //import { connect } from "react-redux";
 
 const FormItem = Form.Item;
@@ -27,21 +42,15 @@ const mapStateToProps = (state, props) => ({
 });
 
 @Form.create()
-class CourseEdit extends React.Component {
+class Credential extends React.Component {
   state = {
-    course: {
-      Certificate: "",
-      Name: "",
-      StartEndDate: [moment("2018-01-01"), moment("2019-01-01")],
-      Duration: "",
-      Level: "",
-      Description: "",
-      CourseResult: ["A", "B"]
-    },
-    courseEditMode: false,
-    loading: false
+    model: "Example text"
   };
-
+  handleModelChange = model => {
+    this.setState({
+      model: model
+    });
+  };
   componentDidMount() {
     /* if (this.props.currencieEditMode) {
       const id = this.props.match.params.id;
@@ -124,25 +133,13 @@ class CourseEdit extends React.Component {
     console.log(date, dateString);
   };
   render() {
-    const { getFieldDecorator } = this.props.form;
-    const {
-      Certificate,
-      Name,
-      StartEndDate,
-      Level,
-      Duration,
-      Description,
-      CourseResult
-    } = this.state.course;
     const options = [{ value: 1, title: "1" }];
     return (
       <div className="card">
         <div className="card-header">
           <div className="utils__title ">
             <Divider>
-              <strong>
-                {this.state.courseEditMode ? "Course Edit" : "Add Course"}
-              </strong>
+              <strong>Credential Recording</strong>
             </Divider>
           </div>
         </div>
@@ -153,102 +150,66 @@ class CourseEdit extends React.Component {
             className="login-form"
           >
             <BaseContainer>
-              <InputAdapter2
-                name="Name"
-                value={Name}
-                required
-                placeholder="Name"
-                form={this.props.form}
-                lable="Name"
-              />
-            </BaseContainer>
-            <BaseContainer>
               <SelectAdapter2
-                name="Certificate"
-                value={Certificate}
-                required
-                placeholder="Certificate"
-                form={this.props.form}
-                lable="Certificate"
-                options={options}
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <RangePickerAdapter2
-                name="StartEndDate"
-                value={StartEndDate}
-                required
-                onChange={this.onChange}
-                form={this.props.form}
-                lable="Start - End Date"
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <InputAdapter2
-                name="Duration"
-                value={Duration}
-                required
-                placeholder="Duration"
-                form={this.props.form}
-                lable="Duration"
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <SelectAdapter2
-                name="Level"
-                value={Level}
-                placeholder="Level"
-                required
-                form={this.props.form}
-                lable="Level"
-                options={options}
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <SelectAdapter2
-                name="InstitutionName"
+                name="Institution"
                 value=""
-                required
-                placeholder="Institution Name"
+                placeholder="Select Institution"
                 form={this.props.form}
-                lable="Institution Name"
+                lable="Select Institution"
                 options={options}
               />
             </BaseContainer>
+            <div className="row">
+              <div className="col-6">
+                <SelectAdapter2
+                  name="Course"
+                  value=""
+                  placeholder="Select Course"
+                  form={this.props.form}
+                  lable="Select Course"
+                  options={options}
+                />
+              </div>
+              <div className="col-3">
+                <AddButton url="/controlpanel/courses/add-course" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <SelectAdapter2
+                  name="Student"
+                  value=""
+                  placeholder="Select Student"
+                  form={this.props.form}
+                  lable="Select Student"
+                  options={options}
+                />
+              </div>
+              <div className="col-3">
+                <AddButton url="/controlpanel/users/add-user" />
+              </div>
+            </div>
+
             <BaseContainer>
-              <SelectAdapter2
-                name="CourseAuthor"
+              <DatePickerAdapter2
+                name="CompletionDate"
                 value=""
-                required
-                placeholder="Course Author"
+                placeholder="CompletionDate"
                 form={this.props.form}
-                lable="Course Author"
-                options={options}
+                lable="Completion Date"
               />
             </BaseContainer>
             <BaseContainer>
-              <TextAreaAdapter2
-                name="Description"
-                value={Description}
-                placeholder="Description"
+              <CheckboxAdapter2
+                name="Notify"
+                value={true}
                 form={this.props.form}
-                lable="Description"
+                lable="Notify Student"
               />
             </BaseContainer>
-            <BaseContainer>
-              <DynamicInputAdapter
-                name="keys"
-                value={CourseResult}
-                placeholder="Description"
-                form={this.props.form}
-                lable="Course Result"
-              />
-            </BaseContainer>
+
             <div className="form-actions">
-              <SubmitButton
-                text={this.state.courseEditMode ? "Save" : "Add"}
-                loading={this.state.loading}
-              />
+              <SubmitButton text="Submit" loading={this.state.loading} />
               <CancelButton text="Cancel" />
             </div>
           </Form>
@@ -258,4 +219,4 @@ class CourseEdit extends React.Component {
   }
 }
 
-export default CourseEdit;
+export default Credential;

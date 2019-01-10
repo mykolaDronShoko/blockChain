@@ -29,7 +29,13 @@ class MenuPage extends React.Component {
             Home
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="Copyright:1">
+        <Menu.Item key="verification:2">
+          <NavLink to="/home/verification">
+            <Icon type="safety" />
+            Verification
+          </NavLink>
+        </Menu.Item>
+        {/*  <Menu.Item key="Copyright:1">
           <NavLink to="/home/copyright">
             <Icon type="book" />
             Copyright
@@ -40,14 +46,14 @@ class MenuPage extends React.Component {
             <Icon type="compass" />
             About Us
           </NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key="Support:2">
           <NavLink to="/home/faq">
             <Icon type="question-circle" />
             Support
           </NavLink>
         </Menu.Item>
-        <Menu.Item key="Privacy:2">
+        {/*   <Menu.Item key="Privacy:2">
           <NavLink to="/home/privacypolicy">
             <Icon type="key" />
             Privacy Policy
@@ -58,43 +64,14 @@ class MenuPage extends React.Component {
             <Icon type="safety" />
             Terms and Conditions
           </NavLink>
-        </Menu.Item>
-        <Menu.Item key="verification:2">
-          <NavLink to="/home/verification">
-            <Icon type="safety" />
-            Verification
-          </NavLink>
-        </Menu.Item>
-        {/* <SubMenu
-          title={
-            <span className="submenu-title-wrapper">
-              <Icon type="info-circle" />
-              Information
-            </span>
-          }
-        >
-          <Menu.Item key="Copyright:1">
-            <NavLink to="/copyright">Copyright</NavLink>
-          </Menu.Item>
-          <Menu.Item key="About:2">
-            <NavLink to="/disclaimer">About Us</NavLink>
-          </Menu.Item>
-          <Menu.Item key="Support:2">
-            <NavLink to="/faq">Support</NavLink>
-          </Menu.Item>
-          <Menu.Item key="Privacy:2">
-            <NavLink to="/privacypolicy">Privacy Policy</NavLink>
-          </Menu.Item>
-          <Menu.Item key="Terms:2">
-            <NavLink to="/termsconditions">Terms and Conditions</NavLink>
-          </Menu.Item>
-        </SubMenu> */}
-        <Menu.Item key="Feedback">
+        </Menu.Item> */}
+
+        {/* <Menu.Item key="Feedback">
           <NavLink to="/home/contact">
             <Icon type="mail" />
             Feedback
           </NavLink>
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
     );
   }

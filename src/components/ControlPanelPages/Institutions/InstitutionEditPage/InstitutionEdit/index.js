@@ -1,10 +1,7 @@
 import React from "react";
-import {
-  Input,
-  Button,
-  Form,
-  Divider
-} from "antd"; /* 
+import { Input, Button, Form, Divider } from "antd";
+import { FilePond, File, registerPlugin } from "react-filepond";
+/* 
 import { CURRENCIES, CURRENCIES_GET } from "../../../../../globalURL";
 import { connect } from "react-redux";
 import * as ax from "../../../../../services/axios-services";
@@ -127,6 +124,12 @@ class InstitutionEdit extends React.Component {
   onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+  videoOnDrop = (error, f) => {
+    /* this.setState({
+      videoFile: video,
+    }) */
+    console.log(f.file);
+  };
   render() {
     const { getFieldDecorator } = this.props.form;
     const {
@@ -161,10 +164,18 @@ class InstitutionEdit extends React.Component {
             onSubmit={this.onSubmitForm}
             className="login-form"
           >
+            <h5 className="mt-4">Choose Logo for Institution</h5>
+            <FilePond
+              allowMultiple={false}
+              maxFiles={1}
+              required
+              onaddfile={this.videoOnDrop}
+            />
             <BaseContainer>
               <InputAdapter2
                 name="Name"
                 value={Name}
+                required
                 placeholder="Name"
                 form={this.props.form}
                 lable="Name"
@@ -174,6 +185,7 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="Address"
                 value={Address}
+                required
                 placeholder="Address"
                 form={this.props.form}
                 lable="Address"
@@ -183,6 +195,7 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="Unit"
                 value={Unit}
+                required
                 placeholder="Unit"
                 form={this.props.form}
                 lable="Unit"
@@ -192,6 +205,7 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="City"
                 value={City}
+                required
                 placeholder="City"
                 form={this.props.form}
                 lable="City"
@@ -201,15 +215,17 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="Province"
                 value={Province}
+                required
                 placeholder="Province"
                 form={this.props.form}
-                lable="Province"
+                lable="State/Province"
               />
             </BaseContainer>
             <BaseContainer>
               <InputAdapter2
                 name="PostalCode"
                 value={PostalCode}
+                required
                 placeholder="PostalCode"
                 form={this.props.form}
                 lable="PostalCode"
@@ -219,6 +235,7 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="TelephoneNumber"
                 value={TelephoneNumber}
+                required
                 placeholder="TelephoneNumber"
                 form={this.props.form}
                 lable="TelephoneNumber"
@@ -228,6 +245,7 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="FaxNumber"
                 value={FaxNumber}
+                required
                 placeholder="NaFaxNumberme"
                 form={this.props.form}
                 lable="FaxNumber"
@@ -237,6 +255,7 @@ class InstitutionEdit extends React.Component {
               <InputAdapter2
                 name="ContactEmail"
                 value={ContactEmail}
+                required
                 placeholder="ContactEmail"
                 form={this.props.form}
                 lable="ContactEmail"

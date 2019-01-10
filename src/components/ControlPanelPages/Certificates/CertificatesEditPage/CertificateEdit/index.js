@@ -128,12 +128,18 @@ class CertificateEdit extends React.Component {
   onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+  videoOnDrop = (error, f) => {
+    /* this.setState({
+      videoFile: video,
+    }) */
+    console.log(f.file);
+  };
   render() {
     const options = [{ value: 1, title: "1" }];
     return (
       <div className="card">
         <div className="card-header">
-          <div className="utils__title ">
+          <div className="utils__title">
             <Divider>
               <strong>
                 {this.state.certEditMode
@@ -148,6 +154,7 @@ class CertificateEdit extends React.Component {
           <FilePond
             allowMultiple={false}
             maxFiles={1}
+            required
             onaddfile={this.videoOnDrop}
           />
           <Form
@@ -159,6 +166,7 @@ class CertificateEdit extends React.Component {
               <InputAdapter2
                 name="Name"
                 value=""
+                required
                 placeholder="Name"
                 form={this.props.form}
                 lable="Name"
@@ -168,6 +176,7 @@ class CertificateEdit extends React.Component {
               <InputAdapter2
                 name="CertificateKey"
                 value=""
+                required
                 placeholder="Certificate Key"
                 form={this.props.form}
                 lable="Certificate Key"
@@ -178,6 +187,7 @@ class CertificateEdit extends React.Component {
               <SelectAdapter2
                 name="Level"
                 value=""
+                required
                 placeholder="Level"
                 form={this.props.form}
                 lable="Level"
@@ -188,6 +198,7 @@ class CertificateEdit extends React.Component {
               <SelectAdapter2
                 name="InstitutionName"
                 value=""
+                required
                 placeholder="Institution Name"
                 form={this.props.form}
                 lable="Institution Name"
@@ -198,6 +209,7 @@ class CertificateEdit extends React.Component {
               <SelectAdapter2
                 name="CertificateCategory"
                 value=""
+                required
                 placeholder="Certificate Category"
                 form={this.props.form}
                 lable="Certificate Category"

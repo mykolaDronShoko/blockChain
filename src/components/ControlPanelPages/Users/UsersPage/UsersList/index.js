@@ -17,20 +17,17 @@ import AddButton from "../../../../../pages/Adapters/AddButton";
 }) */
 
 //@connect(mapStateToProps)
-class CoursesList extends React.Component {
+class UsersList extends React.Component {
   state = {
     tableData: null,
     data: [
       {
         Id: "456",
-        Certificate: "1",
-        Name: "Blockchain Essentials for Developers",
-        StartEndDate: [moment("2018-01-01"), moment("2019-01-01")],
-        Duration: "45",
-        Level: "1",
-        Description:
-          "This badge earner understands how blockchain technology can be applied to improve banking, supply-chain, and other transaction-based business networks. They can explain IBM Blockchain and the Hyperledger Project's efforts to establish an open source distributed ledger technology to simplify the way that business transactions are conducted. The badge earner has experience using the IBM Blockchain service on Bluemix and experience in developing and deploying chaincode to a blockchain network.",
-        CourseResult: ["A", "B"]
+        Name: "Artour",
+        SurName: "Scott",
+        Email: "artour@gmail.com",
+        Institution: "IBM",
+        Course: "Blockchain Essentials"
       }
     ],
     filterDropdownVisible: false,
@@ -140,33 +137,28 @@ class CoursesList extends React.Component {
         }
       },
       {
-        title: "Certificate",
-        dataIndex: "Certificate",
-        key: "Certificate",
+        title: "SurName",
+        dataIndex: "SurName",
+        key: "SurName",
         render: text => <span>{text}</span>
       },
       {
-        title: "Duration",
-        dataIndex: "Duration",
-        key: "Duration",
-        render: text => <span>{text} Hours</span>
+        title: "Email",
+        dataIndex: "Email",
+        key: "Email",
+        render: text => <span>{text}</span>
       },
       {
-        title: "Start-End Date",
-        dataIndex: "StartEndDate",
-        key: "StartEndDate",
+        title: "Institution",
+        dataIndex: "Institution",
+        key: "Institution",
+        render: text => <span>{text}</span>
+      },
 
-        render: (text, record) => (
-          <span>
-            {record.StartEndDate[0].format("YYYY/MM/DD")}-
-            {record.StartEndDate[1].format("YYYY/MM/DD")}
-          </span>
-        )
-      },
       {
-        title: "Level",
-        dataIndex: "Level",
-        key: "Level",
+        title: "Course",
+        dataIndex: "Course",
+        key: "Course",
         render: text => <span>{text}</span>
       },
       {
@@ -177,7 +169,7 @@ class CoursesList extends React.Component {
           <span>
             <EditButton
               className="mr-1"
-              url={"/controlpanel/courses/edit-course/" + text}
+              url={"/controlpanel/users/edit-user/" + text}
               onClick={this.editHendler}
             />
             <DeleteButton confirm={() => {}} />
@@ -190,11 +182,11 @@ class CoursesList extends React.Component {
         <div className="card-header">
           <div className="utils__title ">
             <Divider>
-              <strong>Courses</strong>
+              <strong>Users</strong>
             </Divider>
           </div>
           <div className="utils__title">
-            <AddButton url="/controlpanel/courses/add-course" />
+            <AddButton url="/controlpanel/users/add-user" />
           </div>
         </div>
         <div className="card-body">
@@ -210,4 +202,4 @@ class CoursesList extends React.Component {
   }
 }
 
-export default CoursesList;
+export default UsersList;

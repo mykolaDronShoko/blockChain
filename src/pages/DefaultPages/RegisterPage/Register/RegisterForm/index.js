@@ -102,12 +102,11 @@ class RegisterForm extends React.Component {
           </FormItem>
           <FormItem>
             {getFieldDecorator("Country", {
-              initialValue: "United Kingdom",
               rules: [
                 { required: true, message: "Please select your Country!" }
               ]
             })(
-              <Select placeholder="Country" style={{ width: "100%" }}>
+              <Select placeholder="Select a Country" style={{ width: "100%" }}>
                 {countries.map(c => (
                   <Option key={c.name} value={c.name}>
                     {c.name}({c.code})
@@ -118,11 +117,15 @@ class RegisterForm extends React.Component {
           </FormItem>
           <FormItem>
             {getFieldDecorator("DateBirth", {
-              initialValue: moment("2018-01-01"),
               rules: [
                 { required: true, message: "Please input your Date of Birth!" }
               ]
-            })(<DatePicker style={{ width: "100%" }} />)}
+            })(
+              <DatePicker
+                placeholder="Select a birthday"
+                style={{ width: "100%" }}
+              />
+            )}
           </FormItem>
           <FormItem>
             <Button

@@ -18,6 +18,8 @@ import RangePickerAdapter2 from "../../../../../pages/Adapters/RangePickerAdapte
 import TextAreaAdapter2 from "../../../../../pages/Adapters/TextAreaAdapter2";
 import moment from "moment";
 import DynamicInputAdapter from "../../../../../pages/Adapters/DynamicInputAdapter";
+import * as countries from "../../../../../pages/DefaultPages/ProfilePage/Profile/SettingsForm/countries.json";
+import DatePickerAdapter2 from "../../../../../pages/Adapters/DatePickerAdapter2";
 //import { connect } from "react-redux";
 
 const FormItem = Form.Item;
@@ -27,9 +29,9 @@ const mapStateToProps = (state, props) => ({
 });
 
 @Form.create()
-class CourseEdit extends React.Component {
+class UsersEdit extends React.Component {
   state = {
-    course: {
+    user: {
       Certificate: "",
       Name: "",
       StartEndDate: [moment("2018-01-01"), moment("2019-01-01")],
@@ -38,7 +40,7 @@ class CourseEdit extends React.Component {
       Description: "",
       CourseResult: ["A", "B"]
     },
-    courseEditMode: false,
+    userEditMode: false,
     loading: false
   };
 
@@ -124,24 +126,19 @@ class CourseEdit extends React.Component {
     console.log(date, dateString);
   };
   render() {
-    const { getFieldDecorator } = this.props.form;
-    const {
-      Certificate,
-      Name,
-      StartEndDate,
-      Level,
-      Duration,
-      Description,
-      CourseResult
-    } = this.state.course;
     const options = [{ value: 1, title: "1" }];
+    const roles = [
+      { value: 1, title: "Admin" },
+      { value: 2, title: "Institution" },
+      { value: 3, title: "Learners" }
+    ];
     return (
       <div className="card">
         <div className="card-header">
           <div className="utils__title ">
             <Divider>
               <strong>
-                {this.state.courseEditMode ? "Course Edit" : "Add Course"}
+                {this.state.userEditMode ? "User Edit" : "Add User"}
               </strong>
             </Divider>
           </div>
@@ -154,99 +151,122 @@ class CourseEdit extends React.Component {
           >
             <BaseContainer>
               <InputAdapter2
-                name="Name"
-                value={Name}
+                name="FirstName"
+                value=""
                 required
-                placeholder="Name"
+                placeholder="First Name"
                 form={this.props.form}
-                lable="Name"
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <SelectAdapter2
-                name="Certificate"
-                value={Certificate}
-                required
-                placeholder="Certificate"
-                form={this.props.form}
-                lable="Certificate"
-                options={options}
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <RangePickerAdapter2
-                name="StartEndDate"
-                value={StartEndDate}
-                required
-                onChange={this.onChange}
-                form={this.props.form}
-                lable="Start - End Date"
+                lable="First Name"
               />
             </BaseContainer>
             <BaseContainer>
               <InputAdapter2
-                name="Duration"
-                value={Duration}
-                required
-                placeholder="Duration"
-                form={this.props.form}
-                lable="Duration"
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <SelectAdapter2
-                name="Level"
-                value={Level}
-                placeholder="Level"
-                required
-                form={this.props.form}
-                lable="Level"
-                options={options}
-              />
-            </BaseContainer>
-            <BaseContainer>
-              <SelectAdapter2
-                name="InstitutionName"
+                name="LastName"
                 value=""
                 required
-                placeholder="Institution Name"
+                placeholder="Last Name"
+                form={this.props.form}
+                lable="Last Name"
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <InputAdapter2
+                name="Email"
+                value=""
+                required
+                placeholder="Email"
+                form={this.props.form}
+                lable="Email"
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <InputAdapter2
+                name="Password"
+                value=""
+                required
+                placeholder="Password"
+                form={this.props.form}
+                lable="Password"
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <InputAdapter2
+                name="ConfirmPassword"
+                value=""
+                required
+                placeholder="Confirm Password"
+                form={this.props.form}
+                lable="Confirm Password"
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <SelectAdapter2
+                name="Country"
+                required
+                value="United States"
+                placeholder="Country"
+                form={this.props.form}
+                lable="Country"
+                options={countries.map(c => ({ value: c.name, title: c.name }))}
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <InputAdapter2
+                name="City"
+                value=""
+                required
+                placeholder="City"
+                form={this.props.form}
+                lable="City"
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <DatePickerAdapter2
+                name="DateBirth"
+                required
+                value=""
+                placeholder="Date of Birth"
+                form={this.props.form}
+                lable="Select Birthday"
+              />
+            </BaseContainer>
+            <BaseContainer>
+              <SelectAdapter2
+                name="Institution"
+                value=""
+                placeholder="Select Institution"
                 form={this.props.form}
                 lable="Institution Name"
                 options={options}
               />
             </BaseContainer>
+
             <BaseContainer>
               <SelectAdapter2
-                name="CourseAuthor"
+                name="Course"
                 value=""
-                required
-                placeholder="Course Author"
+                placeholder="Course"
                 form={this.props.form}
-                lable="Course Author"
+                lable="Course"
                 options={options}
               />
             </BaseContainer>
+
             <BaseContainer>
-              <TextAreaAdapter2
-                name="Description"
-                value={Description}
-                placeholder="Description"
+              <SelectAdapter2
+                name="Role"
+                required
+                value=""
+                placeholder="Сhoose a Role"
                 form={this.props.form}
-                lable="Description"
+                lable="Role"
+                options={roles}
               />
             </BaseContainer>
-            <BaseContainer>
-              <DynamicInputAdapter
-                name="keys"
-                value={CourseResult}
-                placeholder="Description"
-                form={this.props.form}
-                lable="Course Result"
-              />
-            </BaseContainer>
+
             <div className="form-actions">
               <SubmitButton
-                text={this.state.courseEditMode ? "Save" : "Add"}
+                text={this.state.userEditMode ? "Save" : "Add"}
                 loading={this.state.loading}
               />
               <CancelButton text="Cancel" />
@@ -258,4 +278,4 @@ class CourseEdit extends React.Component {
   }
 }
 
-export default CourseEdit;
+export default UsersEdit;
